@@ -1,5 +1,7 @@
 package com.elearning.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,4 +18,13 @@ public class Course {
     private Long courseId;
     private String courseName;
     private String courseDescription;
+    private String courseImage;
+    @ManyToMany
+    @JoinTable(
+        name = "courses_authors",
+        joinColumns = @JoinColumn(name = "courseId"),
+        inverseJoinColumns = @JoinColumn(name = "authorId")
+
+    )
+    private List<Author> authors;
 }
