@@ -17,4 +17,8 @@ public class Lecture {
     private Long lectureId;
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "sectionID")
+    private Section section;
+
 }

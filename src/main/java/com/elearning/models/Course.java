@@ -22,12 +22,13 @@ public class Course {
     @ManyToMany
     @JoinTable(
         name = "courses_authors",
-        joinColumns = @JoinColumn(name = "courseId"),
-        inverseJoinColumns = @JoinColumn(name = "authorId")
+        joinColumns = @JoinColumn(name = "course_id"),
+        inverseJoinColumns = @JoinColumn(name = "author_id")
 
     )
     private List<Author> authors;
 
     @OneToMany(mappedBy= "course")
     private List<Section> sections;
+
 }
