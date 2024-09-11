@@ -11,10 +11,13 @@ import lombok.*;
 public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long resourceID;
+    private Long resourceId;
     private String name;
     private int size;
     private String url;
+        @OneToOne
+    @JoinColumn(name = "lectureId")
+    private Lecture lecture;
 
     
 }

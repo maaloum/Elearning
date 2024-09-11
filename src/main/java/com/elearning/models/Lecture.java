@@ -21,4 +21,8 @@ public class Lecture {
     @JoinColumn(name = "sectionID")
     private Section section;
 
+    @OneToOne
+    @JoinColumn(name = "resourceId")
+    private Resource resource;
+
 }
