@@ -17,4 +17,7 @@ public class Section {
     private String name;
     private String description;
     private int order;
+    @ManyToOne
+    @JoinColumn(name = "courseId")
+    private Course course;
 }
