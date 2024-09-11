@@ -8,6 +8,8 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "resource_type", discriminatorType = DiscriminatorType.STRING)
 public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
