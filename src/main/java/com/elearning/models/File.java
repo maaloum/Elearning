@@ -18,6 +18,5 @@ public class File extends Resource {
     private String name;
     private String path;
     private String type;
-    private String size;
     private String url;
 }
