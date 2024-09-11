@@ -1,8 +1,8 @@
 package com.elearning.models;
 
+import jakarta.persistence.*;
 import jakarta.persistence.GenerationType;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "sections")
