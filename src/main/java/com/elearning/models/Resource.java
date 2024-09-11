@@ -13,5 +13,8 @@ public class Resource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resourceID;
     private String name;
+    private int size;
+    private String url;
+
     
 }
