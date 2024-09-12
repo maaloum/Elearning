@@ -1,6 +1,10 @@
 package com.elearning.models;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,18 +21,33 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseId;
     private String courseName;
+    @Column(length = 1024)
     private String courseDescription;
     private String courseImage;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "courses_authors",
         joinColumns = @JoinColumn(name = "course_id"),
         inverseJoinColumns = @JoinColumn(name = "author_id")
 
     )
-    private List<Author> authors;
+    @JsonManagedReference
+    private Set<Author> authors;
 
     @OneToMany(mappedBy= "course")
-    private List<Section> sections;
+    private Set<Section> sections;
+
+      @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return Objects.equals(courseId, course.courseId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(courseId);
+    }
 
 }

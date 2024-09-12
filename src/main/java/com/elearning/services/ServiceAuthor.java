@@ -21,4 +21,20 @@ public class ServiceAuthor {
         return this.authorRespository.findAll();
     }
 
+    public Author createAuthor(Author author){
+        return this.authorRespository.save(author);
+    }
+
+    //update Author
+    @SuppressWarnings("null")
+    public Author updateAuthor(Long authorId, Author content){
+        Author authorToUpdate = this.authorRespository.findById(authorId).get();
+        if(authorToUpdate == null){
+            System.out.println("author does not exist");
+        }
+        authorToUpdate.setAge(content.getAge());
+        authorToUpdate.setName(content.getName());
+        authorToUpdate.setEmail(content.getEmail());
+        return this.authorRespository.save(authorToUpdate);
+}
 }
