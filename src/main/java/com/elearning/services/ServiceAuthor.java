@@ -1,11 +1,15 @@
 package com.elearning.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.elearning.models.Author;
+import com.elearning.models.Course;
 import com.elearning.repositories.AuthorRespository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class ServiceAuthor {
@@ -37,4 +41,13 @@ public class ServiceAuthor {
         authorToUpdate.setEmail(content.getEmail());
         return this.authorRespository.save(authorToUpdate);
 }
+
+    @Transactional
+    public List<Course> getCoursersByAuthorId(Long authorId){
+        Author author =  this.authorRespository.findById(authorId).
+        orElseThrow(() -> new RuntimeException("Course not found with" + authorId));
+        return new ArrayList<>(author.getCourses()); 
+    }
+
+
 }

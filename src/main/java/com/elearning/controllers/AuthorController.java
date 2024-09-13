@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.elearning.models.Author;
+import com.elearning.models.Course;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,6 +35,11 @@ public class AuthorController {
     public Author updateAuthor(@PathVariable Long authorId, @RequestBody Author content) {        
         return this.authorService.updateAuthor(authorId, content);
     }
+      @GetMapping("/{authorId}/courses")
+    public List<Course> getCoursersByAuthorId(@PathVariable Long authorId) {
+        return this.authorService.getCoursersByAuthorId(authorId);
+    }
+
     
     
 
