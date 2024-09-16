@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "sections")
 @Data
@@ -19,8 +25,11 @@ public class Section {
     private int sectionOrder;
     @ManyToOne
     @JoinColumn(name = "courseID")
+//    @JsonManagedReference
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "course_id")
+    // @JsonIgnore
     private Course course;
-
     @OneToMany(mappedBy="section")
     private List<Lecture> lectures;
 }

@@ -2,7 +2,11 @@ package com.elearning.models;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,8 +35,11 @@ public class Course {
     )
     @JsonManagedReference
     private Set<Author> authors;
-
-    @OneToMany(mappedBy= "course")
+    @OneToMany(mappedBy= "course", fetch = FetchType.LAZY)
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class,
+    property = "section_id")
+    // @JsonBackReference
     private Set<Section> sections;
 
       @Override

@@ -24,12 +24,12 @@ public class CourseController {
         this.serviceCourse = courseService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<Course> getAllCourses() {
         return this.serviceCourse.getAllCourses();
     }
 
-    @PostMapping("")
+    @PostMapping
     public Course createCourse(@RequestBody Course course){
         return this.serviceCourse.creatCourse(course);
     }

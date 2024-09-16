@@ -50,7 +50,8 @@ public class ServiceCourse {
     }
 
    public void deleteAuthorFromCourse(Long courseId){
-        Course course = this.courseRepository.findById(courseId).orElseThrow(() -> new RuntimeException("Course not found with" + courseId));
+        Course course = this.courseRepository.findById(courseId).
+        orElseThrow(() -> new RuntimeException("Course not found with" + courseId));
         course.getAuthors().clear();
         this.courseRepository.save(course);
         }
