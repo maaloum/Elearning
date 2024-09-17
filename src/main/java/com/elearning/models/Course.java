@@ -36,10 +36,11 @@ public class Course {
     @JsonManagedReference
     private Set<Author> authors;
     @OneToMany(mappedBy= "course", fetch = FetchType.LAZY)
-    @JsonIdentityInfo(
-    generator = ObjectIdGenerators.PropertyGenerator.class,
-    property = "section_id")
+    // @JsonIdentityInfo(
+    // generator = ObjectIdGenerators.PropertyGenerator.class,
+    // property = "section_id")
     // @JsonBackReference
+    @JsonManagedReference
     private Set<Section> sections;
 
       @Override

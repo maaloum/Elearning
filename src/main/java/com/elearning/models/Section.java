@@ -25,10 +25,11 @@ public class Section {
     private int sectionOrder;
     @ManyToOne
     @JoinColumn(name = "courseID")
-//    @JsonManagedReference
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, 
-    property = "course_id")
-    // @JsonIgnore
+    //  @JsonManagedReference
+    // @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, 
+    // property = "course_id")
+    @JsonBackReference
+    @JsonIgnore
     private Course course;
     @OneToMany(mappedBy="section")
     private List<Lecture> lectures;

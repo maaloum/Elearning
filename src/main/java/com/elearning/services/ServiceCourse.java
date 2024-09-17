@@ -2,12 +2,15 @@ package com.elearning.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.elearning.models.Author;
 import com.elearning.models.Course;
+import com.elearning.models.Section;
 import com.elearning.repositories.AuthorRespository;
 import com.elearning.repositories.CouseRepository;
+import com.elearning.repositories.SectionRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -16,6 +19,8 @@ public class ServiceCourse {
     
     private final CouseRepository courseRepository;
     private final AuthorRespository authorRespository;
+    // @Autowired
+    // private SectionRepository sectionRepository;
 
     public ServiceCourse(CouseRepository courseRepository, AuthorRespository authorRespository) {
         this.courseRepository = courseRepository;
@@ -40,6 +45,17 @@ public class ServiceCourse {
         return this.courseRepository.save(courseToAssign);
 
     }
+
+
+@Transactional
+    public Course AssignSectionsToCourse(Long courseId, Section section){
+        Course courseToAssign = this.courseRepository.findById(courseId).
+        orElseThrow(() -> new RuntimeException("Course not found with id: " + courseId));
+        courseToAssign.getSections().add(section);
+        return this.courseRepository.save(courseToAssign);
+
+    }
+
 
     @Transactional
     public List<Author> getAuthorsByCourseId(Long courseId){
