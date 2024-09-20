@@ -24,7 +24,7 @@ public class Section {
     private String description;
     private int sectionOrder;
     @ManyToOne
-    @JoinColumn(name = "courseID")
+    @JoinColumn(name = "course_id")
     //  @JsonManagedReference
     // @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, 
     // property = "course_id")

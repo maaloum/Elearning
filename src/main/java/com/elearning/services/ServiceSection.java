@@ -34,5 +34,8 @@ public class ServiceSection {
         return this.sectionRepository.findAll();
     }
 
+    public void deleteAllSections(){
+        this.sectionRepository.deleteAll();
+    }
 
 }
