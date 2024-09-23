@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,22 +25,22 @@ public class SectionController {
         return this.serviceSection.getAllSections();
     }
 
-   @PostMapping
-public Section createSection(@RequestBody Section section) {
-    System.out.println(section);
-    return serviceSection.createSection(section);
-}
+//    @PostMapping
+// public Section createSection(@RequestBody Section section) {
+//     System.out.println(section);
+//     return serviceSection.createSection(section);
+// }
     
 // @DeleteMapping(
 //     "{id}"
 // )
 // public void deleteSection(@PathVariable Long id) {
 //     serviceSection.deleteSection(id);
-//     }
-@DeleteMapping
-public void deleteAllSection(){
-    serviceSection.deleteAllSections();
-}
+// //     }
+// @DeleteMapping
+// public void deleteAllSection(){
+//     serviceSection.deleteAllSections();
+// }
 
 
 }

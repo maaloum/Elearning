@@ -1,12 +1,11 @@
 package com.elearning.services;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import java.util.List;
 
-import com.elearning.models.Course;
+import org.springframework.stereotype.Service;
+
 import com.elearning.models.Section;
-import com.elearning.repositories.SectionRepository;
 import com.elearning.repositories.CouseRepository;
+import com.elearning.repositories.SectionRepository;
 
 
 @Service
@@ -18,16 +17,16 @@ public class ServiceSection {
         this.sectionRepository = sectionRepository;
         this.couseRepository = courseRepository;
     }
-    public Section createSection(Section section) {
-        Course course = section.getCourse();
-        System.out.println("course" + course);
-        if (course != null) {
-            Course fetchedCourse = couseRepository.findById(course.getCourseId())
-                .orElseThrow(() -> new RuntimeException("Course not found"));
-            section.setCourse(fetchedCourse);
-        }
-        return sectionRepository.save(section);
-    }
+    // public Section createSection(Section section) {
+    //     Course course = section.getCourse();
+    //     System.out.println("course" + course);
+    //     if (course != null) {
+    //         Course fetchedCourse = couseRepository.findById(course.getCourseId())
+    //             .orElseThrow(() -> new RuntimeException("Course not found"));
+    //         section.setCourse(fetchedCourse);
+    //     }
+    //     return sectionRepository.save(section);
+    // }
 
 
     public List<Section> getAllSections(){
